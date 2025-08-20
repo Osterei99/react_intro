@@ -1,9 +1,17 @@
 import './App.css';
+import QuoteCard from './QuoteCard';
 
   // Beispielzitat und Charakter
-  const quote = "Der Winter naht.";
-  const character = "Ned Stark";
-  const isEpic = true;
+  const gotQuotes = [
+    { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
+    { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
+    { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
+    { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
+    { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
+    { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
+    { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
+    { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
+  ];
 
   // Stilobjekt für das Zitat
   const quoteStyle = {
@@ -24,28 +32,17 @@ import './App.css';
   };
 
 // Hauptkomponente der Anwendung
+
 function App() {
   return (
-    // Hauptcontainer der App
     <div className="App">
-      {/* Kopfbereich der Anwendung */}
       <header className="App-header">
-        {/* Titel der Anwendung */}
         <h1>Game of Thrones Zitat-Generator</h1>
-        {/* Untertitel/Beschreibung */}
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
-      {/* Hauptinhaltsbereich */}
       <main>
-        <blockquote style={quoteStyle}>
-          "{quote}"
-        </blockquote>
+        <QuoteCard />
       </main>
-      <footer style={characterStyle}>
-        - {character}
-         {/* Bedingte Anzeige eines Stern-Emojis, wenn das Zitat "episch" ist */}
-         {isEpic && <span style={{ marginLeft : "10px" }}>🌟</span>}
-      </footer>
     </div>
   );
 }
