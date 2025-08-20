@@ -1,7 +1,6 @@
 import './App.css';
 import QuoteCard from './QuoteCard';
 
-  // Beispielzitat und Charakter
   const gotQuotes = [
     { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
     { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
@@ -13,25 +12,21 @@ import QuoteCard from './QuoteCard';
     { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
   ];
 
-  // Stilobjekt für das Zitat
   const quoteStyle = {
     fontStyle: 'italic',
     color: '#f89a03ff',
     fontSize: '1.5em',
     marginBottom: '10px',
     borderLeft: '4px solid #f89a03ff',
-    paddingLeft: '15px' // Innenabstand links
+    paddingLeft: '15px'
   };
 
-  // Stilobjekt für den Charakter
   const characterStyle = {
     fontSize: '0.8em',
     color: '#434343ff',
     marginTop: '5px',
-    display: 'block' // Block-Element für neue Zeile
+    display: 'block'
   };
-
-// Hauptkomponente der Anwendung
 
 function App() {
   return (
@@ -41,7 +36,16 @@ function App() {
         <p>Ein Ort für Weisheit (und Sarkasmus) aus Westeros.</p>
       </header>
       <main>
-        <QuoteCard />
+        {gotQuotes.map(q => (
+          <QuoteCard 
+            key={q.id}
+            quoteText={q.quote}
+            characterName={q.character}
+            isQuoteEpic={q.epic}
+            quoteStyle={quoteStyle}
+            characterStyle={characterStyle}
+          />
+        ))}
       </main>
     </div>
   );
