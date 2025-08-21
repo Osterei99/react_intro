@@ -24,6 +24,12 @@ function App() {
 
   const currentQuote = gotQuotes[currentQuoteIndex];
 
+  const [showEpicMessage, setShowEpicMessage] = useState(true);
+
+  function toggleEpicMessage() {
+    setShowEpicMessage(!showEpicMessage);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -37,6 +43,32 @@ function App() {
           characterName={currentQuote.character}
           isQuoteEpic={currentQuote.epic}
         />
+        
+        {currentQuote.epic && (
+          <button
+            onClick={toggleEpicMessage}
+            style={{
+              backgroundColor: '#A0522D',
+              color: 'white',
+              padding: '8px 15px',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              marginTop: '10px',
+              marginBottom: '10px',
+              fontSize: '0.9em'
+            }}
+          >
+           {showEpicMessage ? 'Epische Nachricht ausblenden' : 'Epische Nachricht anzeigen'} 
+          </button>
+        )}
+
+        {currentQuote.epic && showEpicMessage && (
+          <p style={{ color: '#F8C471', fontStyle: 'italic', fontSize: '1.2em' }}>
+            Das ist ein wahrlich episches Zitat! 👑
+          </p>
+        )}
+
         <button
           onClick={showNextQuote}
           style={{
