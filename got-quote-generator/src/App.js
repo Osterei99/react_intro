@@ -1,32 +1,22 @@
 import './App.css';
 import QuoteCard from './QuoteCard';
 
-  const gotQuotes = [
-    { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
-    { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
-    { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
-    { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
-    { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
-    { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
-    { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
-    { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
-  ];
+const gotQuotes = [
+  { id: 1, quote: "Der Winter naht.", character: "Ned Stark", epic: true },
+  { id: 2, quote: "Ein Lannister begleicht stets seine Schulden.", character: "Tyrion Lannister", epic: false },
+  { id: 3, quote: "Wenn du das Spiel der Throne spielst, gewinnst du oder du stirbst. Es gibt keinen Mittelweg.", character: "Cersei Lannister", epic: true },
+  { id: 4, quote: "Die Nacht ist dunkel und voller Schrecken.", character: "Melisandre", epic: false },
+  { id: 5, quote: "Ich trinke und ich weiß Dinge.", character: "Tyrion Lannister", epic: true },
+  { id: 6, quote: "Das Chaos ist keine Grube. Das Chaos ist eine Leiter.", character: "Petyr Baelish", epic: false },
+  { id: 7, quote: "Hodor!", character: "Hodor", epic: false },
+  { id: 8, quote: "Valar Morghulis.", character: "Jaqen H'ghar", epic: true },
+];
 
-  const quoteStyle = {
-    fontStyle: 'italic',
-    color: '#f89a03ff',
-    fontSize: '1.5em',
-    marginBottom: '10px',
-    borderLeft: '4px solid #f89a03ff',
-    paddingLeft: '15px'
-  };
 
-  const characterStyle = {
-    fontSize: '0.8em',
-    color: '#434343ff',
-    marginTop: '5px',
-    display: 'block'
-  };
+function handleLike(characterName) {
+  console.log(`${characterName} Zitat wurde geliked!`);
+};
+
 
 function App() {
   return (
@@ -37,14 +27,26 @@ function App() {
       </header>
       <main>
         {gotQuotes.map(q => (
-          <QuoteCard 
+          <QuoteCard
             key={q.id}
             quoteText={q.quote}
             characterName={q.character}
             isQuoteEpic={q.epic}
-            quoteStyle={quoteStyle}
-            characterStyle={characterStyle}
-          />
+          >
+            <button 
+              onClick={() => handleLike(q.character)}
+              style={{
+                backgroundColor: '#f4b747ff',
+                color: 'white',
+                padding: '8px 15px',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                marginTop: '10px'
+            }}>
+              Gefällt mir!
+            </button>
+          </QuoteCard> 
         ))}
       </main>
     </div>
