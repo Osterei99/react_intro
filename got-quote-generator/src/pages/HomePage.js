@@ -56,7 +56,6 @@ function HomePage() {
 
   return (
     <div className="home-page-content">
-
         {isLoading && (
           <p style={{ color: '#ccc', fontSize: '1.2em' }}>
             Lade Zitat..<span role="img" aria-label="loading spinner">⏳</span>
